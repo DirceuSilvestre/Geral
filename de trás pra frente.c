@@ -4,6 +4,7 @@
 
 #define S 6
 
+//Insere os números na ordem que quiser, e o código altera a ordem, colocando e trás pra frente dentro do mesmo vetor
             
 int main(int argc, char const *argv[])
 {
@@ -26,6 +27,8 @@ int main(int argc, char const *argv[])
     }
     return 0;
 }
+
+//Código acima direto e código abaixo com função
 
 void troca(int v[])
 {
