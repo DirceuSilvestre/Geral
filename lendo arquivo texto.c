@@ -1,7 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h>
 
-int main(int argc, char const *argv[])
+int main( )
 {
     FILE *arquivo;
     char ler[20], l;
@@ -11,14 +11,17 @@ int main(int argc, char const *argv[])
     {
         printf("nao abriu\n");
     }
-    i=0;
-    l=fgetc(arquivo);
-    while (l!=EOF)
+    else
     {
-        ler[i]=l;
-        printf("%c\n", ler[i]);
-        i++;
+        i=0;
         l=fgetc(arquivo);
+        while (!feof(arquivo))
+        {
+            ler[i]=l;
+            printf("%c\n", ler[i]);
+            i++;
+            l=fgetc(arquivo);
+        }
     }
     fclose(arquivo);
     return 0;
