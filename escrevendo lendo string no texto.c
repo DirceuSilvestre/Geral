@@ -5,8 +5,7 @@
 int main( )
 {
     FILE *arquivo;
-    char ler[50], l, escrever[50];
-    int i;
+    char ler[50], escrever[50];
     arquivo = fopen("arquivo.txt", "r+");
     if(arquivo == NULL)
     {
