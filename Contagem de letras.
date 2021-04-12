@@ -1,0 +1,29 @@
+#include <stdio.h>
+int main()
+{
+    char letras[20];
+    int contagem[20];
+    int i, j, k;
+    scanf("%s", letras);
+    for(i = 0; letras[i] != '\0'; i++)
+    {
+        contagem[i] = 1;
+        for(j = i + 1; letras[j] != '\0'; j++)
+        {
+            if(letras[i] == letras[j])
+            {
+                contagem[i] += 1;
+                for(k = j; letras[k] != '\0'; k++)
+                {
+                    letras[k] = letras[k + 1];
+                }
+            }
+        }
+    }
+    for(i = 0; letras[i] != '\0'; i++)
+    {
+        printf("%c - ", letras[i]);
+        printf("%d\n", contagem[i]);
+    }
+    return 0;
+}
