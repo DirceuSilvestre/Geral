@@ -49,6 +49,8 @@ A função principal de C, unica que precisa estar presente é a: MAIN()
 	#Main
 		Recebe os parâmetros (int argc; int *argv []), mas também pode ser void
 			argc são os números que pode receber e são passados após o ./teste no terminal separados por ' ' espaço
+				o ./teste já conta como 1 argumento no argc, portanto qualquer outro comando após contartá como 2 no argc
+				
 			*argv [] é um vetor de strings, o argv[0] costuma ser o ./teste digitado no terminal
 		
 Para executar algumas funções, como as mais básicas, deve chamar a biblioteca respectiva dessa forma: #INCLUDE <BIBLIOTECA.H>
