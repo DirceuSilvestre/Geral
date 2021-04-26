@@ -5,8 +5,8 @@ Estruturas Básicas:
 		variável = 10 ou 'c'   atribui o numero ou a letra, a variavel
 
 	#Variáveis
-		locais - dentro do main ou função
-		global - fora do main
+		locais - só funcionam dentro do main ou função onde foram declaradas
+		global - são declaradas fora do main e podem ser chamadas onde for no código
 		parâmetros formais - dentro dos parenteses ( da função ) 
 
 	#Dados Numéricos
@@ -31,7 +31,7 @@ Estruturas Básicas:
 	#Tipos básicos de variaveis
 		Inteiro - recebe numeros positivos e negativos
 		Float - recebe numeros com casas decimais
-		Double - mais recomendado para numeros decimais
+		Double - mais recomendado para numeros decimais pois tem precisão dupla
 		Char - recebe letras e outros caracteres, algumas vezes usa a biblioteca <string.h>
 		Bool - recebe true ou false, mas tem que chamar a biblioteca <stdbool.h>
 
@@ -39,6 +39,7 @@ Estruturas Básicas:
 		{
 			int real = -10;
 			float decimal = 1.5;
+			double decimal = 1.5;
 			char letra = 'a';
 			bool boleana = true;
 			return 0;
@@ -54,6 +55,7 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 				%d   inteiro 
 				%f   ponto flutuante
 				%.3f ponto flutuante com 3 casas decimais
+				%lf  ponto flutuante de precisão dupla
 				%s   string
 
 	#Função Scanf
@@ -61,6 +63,7 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 				%c   caracter
 				%d   inteiro 
 				%f   ponto flutuante
+			    %lf  ponto flutuante de precisão dupla
 				%s   string
 
 	#Funções Matemáticas (necessário #include <math.h>)
@@ -100,15 +103,29 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 	#Funções
 		tipo_retornado nome_da_função (parâmetros) {bloco da função}
 
+			se declarar uma variavel local com o mesmo nome de uma global, a preferencia vai ser da local
+
+		Declaração (protótipo)         antes do main
+			tipo_retornado nome_da_função (declaração de parâmetros);
+
+		Definiçao (código da função)   pode ser antes ou depois do main 
+			tipo_retornado nome_da_função (declaração de parâmetros) {bloco da função}
+
+		Ativação (chamada)             dentro do main ou de outra função
+
 		void função(int parâmetros ou *parâmetros ou matrizâmetro[][coluna], int *parâmetro)
 		{
 			bloco da função que usa parâmetros e *parâmetro e matrizâmetro
+			return;
 		}
 		int main( )
 		{
 			função(parâmetros1 ou vetor ou matriz, &parâmetro1);   o parâmetros1 pode ser vetor ou matriz sem seus []
 			return 0;
 		}
+
+	#Parâmetros 
+
 
 	#Ponteiros
 		Declaração: 
@@ -118,6 +135,15 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 			ponteiro = &variavel;
 			int main(){função(&variavel)} envia o endereço - função(int *ponteiro){bloco da função} recebe o endereço
 			int main(){função(vetor)} envia o endereço - função(int *ponteiro){bloco da função} recebe o endereço
+			int main(){função(vetor)} envia o endereço - função(int ponteiro[]){bloco da função} recebe o endereço
+
+			Por valor:
+				passagem normal, parametros copiados tratados como variaveis locais, execução no modelo de pilha, 
+				função acaba variaveis são liberadas e a original nao se altera
+
+			Por referência:
+				utiliza ponteiro, o que é passado para o parametro da função é o endereço da memória onde o conteudo
+				se encontra, altera o conteudo original dentro da função
 
 		Operações:
 			apenas duas podem ser usadas com ponteiro, adição e subtração, p-- e p++, e servem para percorrer o vetor
@@ -128,6 +154,7 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 	#Recursividade
 		Chamar a si mesmo, salvando os valores na pilha, até determinado ponto de parada ou ponto sem a recursão
 		e retorna fazendo os calculos com os numeros anteriores
+		
 		int fib(int n)
 		{
     		if (n<2)
@@ -139,6 +166,7 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
         		return (fib(n-1)+fib(n-2));
     		}
 		}
+		
 		int fatorial(int v)
 		{
 	    	if (v<2)
@@ -190,4 +218,3 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 			arquivo éo local de onde será lido
 			numero.de.bytes é pra saber a partir de onde iniciará a leitura, total de bytes a ser pulado
 			tipo é de onde ocorrerá a leitura, a partir de qual ponto pulará a quantidade de bytes, SEEK_SET início, SEEK_CUR meio, SEEK_END fim												
-	
