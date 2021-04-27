@@ -215,7 +215,7 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 			arquivo.dat		sequencia de bits sujeito as convenções do programa que o gerou, como as tabelas usadas em cada programa
 			
 		Stream
-			esses arquivos ficam armazenados em um local, podendo ser hd, ou quaisquer outros periféricos, e devido a inumera quantidade de dispositivos
+			os dados ficam armazenados em um local, podendo ser hd, ou quaisquer outros periféricos, e devido a inumera quantidade de dispositivos
 			diferentes, todos eles são tratados da mesma forma para facilitar o trabalho de escrita e leitura
 			
 			stream de texto		sequência de caracteres
@@ -223,27 +223,45 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 			stream binário		sequência de bytes sem tradução para nenhuma tabela, numero de bytes lidos são os mesmos encontrados no dispositivo
 			
 		Associa-se a stream que se deseja trabalhar a um arquivo, e realiza a operação de abertura para que as informações possam ser trocadas entre o
-		dispositivo e o programa
+		dispositivo e o programa   (um pouco complicado de inicio)
 			
-			
+		Cada stream associado a um arquivo tem uma estrutura de controle desse arquivo do tipo FILE
+		
 		FILE *arquivo                                           declarar a variavel ponteiro como  
+		
 		arquivo = fopen( nome_do_arquivo, modo_de_abertura)     para manipular precisa abrir usando fopen
 
 				nome_do_arquivo é o caminho onde ele está, pode ser absoluto(direto) ou relativo  -  igual no javascript
-				modo_de_abertura é um parâmetro que cada letra designa uma ação, exemplo: 'r' leitura 'r+' leitura e escrita
+				modo_de_abertura é um parâmetro que cada letra designa uma ação, exemplo: 'r' leitura 'r+' leitura e escrita, e etc...
+					os modos de abertur são diferentes pra arquivos de texto ou binários
+				
+		Caminhos
+			absoluto		quando o caminho é descrito desde o diretório raiz, desde o C:
+			
+			relativo		caminho desde o diretório corrente, geralmente está perto, ou junto com o executável
+				
 
 		fclose(arquivo)                                         é necessário fechar o arquivo ao terminar de usar
-		fputc(string, arquivo)									coloca a string no arquivo caracter por caracter
-		fgetc(arquivo)											recebe a string do arquivo caracter por caracter, EOF ao final
-		feof(arquivo) 											pode substituir o EOF na verificação do final, volta 0 ou 1
-		fputs(vetor, arquivo)									coloca o vetor direto dentro do arquivo
+		
+		fputc(string, arquivo)					coloca a string no arquivo caracter por caracter
+		
+		fgetc(arquivo)						recebe a string do arquivo caracter por caracter, EOF ao final
+		
+		feof(arquivo) 						pode substituir o EOF na verificação do final, volta 0 ou 1
+			todo arquivo texto ao final tem um EOF, assim como as strings terminam com '\0'
+				
+		fputs(vetor, arquivo)					coloca o vetor direto dentro do arquivo
+		
 		fgets(vetor, 20, arquivo)                               coloca o texto do arquivo do tamanho pedido no vetor
+		
 		fwrite(&bloco, numero.de.bytes, total, arquivo)         escreve tudo que esta dentro do vetor no arquivo
 			&bloco é o ponteiro do vetor, com ou sem &
 			numero.de.bytes é pra saber o tamanho de cada posição do vetor sizeof(char, ou int ou...)
 			total é o tamanho do conteudo do vetor que vai ser gravado strlen(bloco) 
 			arquivo é o local onde sera salvo
+			
 		fread(&bloco, numero.de.bytes, total, arquivo)			utiliza os mesmos parâmetros do fwrite mas pra leitura
+		
 		fseek(arquivo, numero.de.bytes, tipo)					posiciona a leitura em determinado ponto do arquivo
 			arquivo éo local de onde será lido
 			numero.de.bytes é pra saber a partir de onde iniciará a leitura, total de bytes a ser pulado
