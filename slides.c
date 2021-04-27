@@ -49,7 +49,7 @@ A função principal de C, unica que precisa estar presente é a: MAIN()
 	#Main
 		Recebe os parâmetros (int argc; int *argv []), mas também pode ser void
 			argc são os números que pode receber e são passados após o ./teste no terminal separados por ' ' espaço
-				o ./teste já conta como 1 argumento no argc, portanto qualquer outro comando após contartá como 2 no argc
+			o ./teste já conta como 1 argumento no argc, portanto qualquer outro comando após contartá como 2 no argc
 				
 			*argv [] é um vetor de strings, o argv[0] costuma ser o ./teste digitado no terminal
 		
@@ -208,12 +208,6 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 
 	#Arquivos    (já na biblioteca stdio.h)
 	
-		Arquivo texto
-			arquivo.txt		armazena caracteres que podem ser mostrados diretamente na tela e modificados com editor de texto
-			
-		Arquivo binário
-			arquivo.dat		sequencia de bits sujeito as convenções do programa que o gerou, como as tabelas usadas em cada programa
-			
 		Stream
 			os dados ficam armazenados em um local, podendo ser hd, ou quaisquer outros periféricos, e devido a inumera quantidade de dispositivos
 			diferentes, todos eles são tratados da mesma forma para facilitar o trabalho de escrita e leitura
@@ -227,7 +221,7 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 			
 		Cada stream associado a um arquivo tem uma estrutura de controle desse arquivo do tipo FILE
 		
-		FILE *arquivo                                           declarar a variavel ponteiro como  
+		FILE *arquivo                                           declarar a variavel como ponteiro
 		
 		arquivo = fopen( nome_do_arquivo, modo_de_abertura)     para manipular precisa abrir usando fopen
 
@@ -243,26 +237,55 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 
 		fclose(arquivo)                                         é necessário fechar o arquivo ao terminar de usar
 		
-		fputc(string, arquivo)					coloca a string no arquivo caracter por caracter
-		
-		fgetc(arquivo)						recebe a string do arquivo caracter por caracter, EOF ao final
-		
-		feof(arquivo) 						pode substituir o EOF na verificação do final, volta 0 ou 1
-			todo arquivo texto ao final tem um EOF, assim como as strings terminam com '\0'
-				
-		fputs(vetor, arquivo)					coloca o vetor direto dentro do arquivo
-		
-		fgets(vetor, 20, arquivo)                               coloca o texto do arquivo do tamanho pedido no vetor
-		
-		fwrite(&bloco, numero.de.bytes, total, arquivo)         escreve tudo que esta dentro do vetor no arquivo
-			&bloco é o ponteiro do vetor, com ou sem &
-			numero.de.bytes é pra saber o tamanho de cada posição do vetor sizeof(char, ou int ou...)
-			total é o tamanho do conteudo do vetor que vai ser gravado strlen(bloco) 
-			arquivo é o local onde sera salvo
+		Arquivo texto
+			arquivo.txt		armazena caracteres que podem ser mostrados diretamente na tela e modificados com editor de texto
 			
-		fread(&bloco, numero.de.bytes, total, arquivo)			utiliza os mesmos parâmetros do fwrite mas pra leitura
+			Funções de leitura
+			
+				fscanf(arquivo, tipo, variavel)
+					arquivo 		é de onde será lido a informação
+					tipo			é como no scanf onde se poe os " " com % alguma coisa dentro: "%c"
+					variavel 		é onde vai ficar guardado para manipulação o que será lido do arquivo
+					
+				fgetc(arquivo)			recebe a string do arquivo caracter por caracter, EOF ao final
+				
+				fgets(vetor, 20, arquivo)       coloca o texto do arquivo do tamanho pedido no vetor
+				
+			Funções de escrita ou impressão
+				
+				fprintf(arquivo, tipo, variavel)
+					funciona da mesma forma que o fscanf, porém insere o conteúdo da variável no arquivo
+					já usei para alterar o formato se string para decimal colocando "%d" no tipo
+					
+				fputc(string, arquivo)		coloca a string no arquivo caracter por caracter
+				
+				fputs(vetor, arquivo)					coloca o vetor direto dentro do arquivo
+				
+			feof(arquivo) 						pode substituir o EOF na verificação do final, volta 0 ou 1
+			todo arquivo texto ao final tem um EOF, assim como as strings terminam com '\0'
+			
+			
+		Arquivo binário
+			arquivo.dat		sequencia de bits sujeito as convenções do programa que o gerou, como as tabelas usadas em cada programa
 		
-		fseek(arquivo, numero.de.bytes, tipo)					posiciona a leitura em determinado ponto do arquivo
-			arquivo éo local de onde será lido
-			numero.de.bytes é pra saber a partir de onde iniciará a leitura, total de bytes a ser pulado
-			tipo é de onde ocorrerá a leitura, a partir de qual ponto pulará a quantidade de bytes, SEEK_SET início, SEEK_CUR meio, SEEK_END fim												
+		
+			Funções de leitura
+				
+				fread(&bloco, numero.de.bytes, total, arquivo)		utiliza os mesmos parâmetros do fwrite mas pra leitura
+				
+				fseek(arquivo, numero.de.bytes, tipo)			posiciona a leitura em determinado ponto do arquivo
+					arquivo éo local de onde será lido
+					numero.de.bytes é pra saber a partir de onde iniciará a leitura, total de bytes a ser pulado
+					tipo é de onde ocorrerá a leitura, a partir de qual ponto pulará a quantidade de bytes, SEEK_SET início, SEEK_CUR meio, SEEK_END fim	
+					
+			Funções de escrita
+			
+				fwrite(&bloco, numero.de.bytes, total, arquivo)         escreve tudo que esta dentro do vetor no arquivo
+					&bloco é o ponteiro do vetor, com ou sem &
+					numero.de.bytes é pra saber o tamanho de cada posição do vetor sizeof(char, ou int ou...)
+					total é o tamanho do conteudo do vetor que vai ser gravado strlen(bloco) 
+					arquivo é o local onde sera salvo
+			
+		
+		
+		
