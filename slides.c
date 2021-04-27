@@ -207,6 +207,25 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 		falta entender e aplicar
 
 	#Arquivos    (já na biblioteca stdio.h)
+	
+		Arquivo texto
+			arquivo.txt		armazena caracteres que podem ser mostrados diretamente na tela e modificados com editor de texto
+			
+		Arquivo binário
+			arquivo.dat		sequencia de bits sujeito as convenções do programa que o gerou, como as tabelas usadas em cada programa
+			
+		Stream
+			esses arquivos ficam armazenados em um local, podendo ser hd, ou quaisquer outros periféricos, e devido a inumera quantidade de dispositivos
+			diferentes, todos eles são tratados da mesma forma para facilitar o trabalho de escrita e leitura
+			
+			stream de texto		sequência de caracteres
+			
+			stream binário		sequência de bytes sem tradução para nenhuma tabela, numero de bytes lidos são os mesmos encontrados no dispositivo
+			
+		Associa-se a stream que se deseja trabalhar a um arquivo, e realiza a operação de abertura para que as informações possam ser trocadas entre o
+		dispositivo e o programa
+			
+			
 		FILE *arquivo                                           declarar a variavel ponteiro como  
 		arquivo = fopen( nome_do_arquivo, modo_de_abertura)     para manipular precisa abrir usando fopen
 
