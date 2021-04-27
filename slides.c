@@ -55,22 +55,27 @@ A função principal de C, unica que precisa estar presente é a: MAIN()
 		
 Para executar algumas funções, como as mais básicas, deve chamar a biblioteca respectiva dessa forma: #INCLUDE <BIBLIOTECA.H>
 
-	#Função Printf
-		Comandos de formatação:
-				%c   caracter
-				%d   inteiro 
-				%f   ponto flutuante
-				%.3f ponto flutuante com 3 casas decimais
-				%lf  ponto flutuante de precisão dupla
-				%s   string
-
-	#Função Scanf
-		Comandos de leitura:
-				%c   caracter
-				%d   inteiro 
-				%f   ponto flutuante
-			    %lf  ponto flutuante de precisão dupla
-				%s   string
+	#Funções de impressão
+		#Função Printf
+			Comandos de formatação:
+					%c   caracter
+					%d   inteiro 
+					%f   ponto flutuante
+					%.3f ponto flutuante com 3 casas decimais
+					%lf  ponto flutuante de precisão dupla
+					%s   string
+	
+	#Funções de leitura
+		#Função Scanf
+			Comandos de leitura:
+					%c   caracter
+					%d   inteiro 
+					%f   ponto flutuante
+			    		%lf  ponto flutuante de precisão dupla
+					%s   string
+				
+		#
+	
 
 	#Funções Matemáticas (necessário #include <math.h>)
 		ceil()   arredonda pra cima
@@ -187,9 +192,9 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 
 	#Struct
 		Organiza melhor os dados referentes a mesma coisa, sendo chamados nome_struct.nome_variavel
-		struct {
+		struct nome_struct{
 			tipo nome_variavel;
-		} nome_struct;
+		} 
 	
 	#Union
 		armazena tipos diferentes no mesmo local de memória, só armazena um por vez para cada 'nome_union', chama igual struct
