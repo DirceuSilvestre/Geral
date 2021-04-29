@@ -286,6 +286,13 @@ Para executar algumas funções, como as mais básicas, deve chamar a biblioteca
 					total é o tamanho do conteudo do vetor que vai ser gravado strlen(bloco) 
 					arquivo é o local onde sera salvo
 			
+	#Alocação Dinamica
+		espaço de memória alocado na heap (rippie hahaha) conforme a necessidade do programa. toda memoria dinamicamente alocada tem que ser desalocada da mesma forma
+		
+		tipo *v;
+		v = (tipo*) malloc(sizeoff(tipo));		função que aloca memória
+		
+		free(v);					desaloca a memória alocada dinamicamente
 		
 		
 		
